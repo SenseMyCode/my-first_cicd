@@ -28,12 +28,12 @@ jobs:
             docker stop my-app-${{ secrets.VPS_PORT_NUMBER }} || true
             docker rm my-app-${{ secrets.VPS_PORT_NUMBER }} || true
 
-            # Pobierz najnowszy obraz
-            docker pull ghcr.io/${{ github.repository_owner }}/my-first_cicd:latest
+            # Pobierz najnowszy obraz (lowercase!)
+            docker pull ghcr.io/sensemycode/my-first_cicd:latest
 
             # Uruchom kontener na porcie studenta
             docker run -d \
               --name my-app-${{ secrets.VPS_PORT_NUMBER }} \
               --restart unless-stopped \
               -p 8${{ secrets.VPS_PORT_NUMBER }}:80 \
-              ghcr.io/${{ github.repository_owner }}/my-first_cicd:latest
+              ghcr.io/sensemycode/my-first_cicd:latest
